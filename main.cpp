@@ -16,6 +16,7 @@ int main()
     }
     Spolu.vydel(3).vypisKruh();
     Spolu.pripocitaj(13).vypisKruh();
+    Kruh::getMax(kruhy,3).vypisKruh();
     return 0;
 }
 
@@ -96,4 +97,17 @@ Kruh Kruh::pripocitaj(float cislo) const
 {
     //return Kruh(polomer+cislo,nazov);
     return {polomer+cislo,nazov};
+}
+
+Kruh Kruh::getMax(Kruh pole[], int pocet)
+{
+    Kruh max=pole[0];
+    for(int i=1;i<pocet;++i)
+    {
+        if(pole[i].jeVacsi(max))
+        {
+            max=pole[i];
+        }
+    }
+    return max;
 }

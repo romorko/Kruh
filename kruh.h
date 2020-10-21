@@ -8,6 +8,7 @@ private:
     float polomer;
     char nazov;
 public:
+    static Kruh getMax(Kruh pole[],int pocet);
     Kruh(float mojPolomer,char mojNazov);
     Kruh();
     explicit Kruh(float mojPolomer);
