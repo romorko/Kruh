@@ -80,15 +80,15 @@ include CMakeFiles/Kruh.dir/flags.make
 CMakeFiles/Kruh.dir/main.cpp.o: CMakeFiles/Kruh.dir/flags.make
 CMakeFiles/Kruh.dir/main.cpp.o: ../main.cpp
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/roman/CLionProjects/MAP2020/Kruh/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/Kruh.dir/main.cpp.o"
-	/usr/bin/clang++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Kruh.dir/main.cpp.o -c /home/roman/CLionProjects/MAP2020/Kruh/main.cpp
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Kruh.dir/main.cpp.o -c /home/roman/CLionProjects/MAP2020/Kruh/main.cpp
 
 CMakeFiles/Kruh.dir/main.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Kruh.dir/main.cpp.i"
-	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/roman/CLionProjects/MAP2020/Kruh/main.cpp > CMakeFiles/Kruh.dir/main.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/roman/CLionProjects/MAP2020/Kruh/main.cpp > CMakeFiles/Kruh.dir/main.cpp.i
 
 CMakeFiles/Kruh.dir/main.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Kruh.dir/main.cpp.s"
-	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/roman/CLionProjects/MAP2020/Kruh/main.cpp -o CMakeFiles/Kruh.dir/main.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/roman/CLionProjects/MAP2020/Kruh/main.cpp -o CMakeFiles/Kruh.dir/main.cpp.s
 
 # Object files for target Kruh
 Kruh_OBJECTS = \

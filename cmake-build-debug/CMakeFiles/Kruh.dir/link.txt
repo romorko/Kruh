@@ -1,1 +1,1 @@
-/usr/bin/clang++  -g   CMakeFiles/Kruh.dir/main.cpp.o  -o Kruh 
+/usr/bin/c++  -g   CMakeFiles/Kruh.dir/main.cpp.o  -o Kruh 

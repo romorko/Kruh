@@ -4,9 +4,9 @@
 class Kruh
 {
 private:
-    static constexpr float PI {3.14}; //PI=3.14
     float polomer;
     char nazov;
+    static constexpr float PI {3.14}; //PI=3.14
 public:
     static Kruh getMax(Kruh pole[],int pocet);
     Kruh(float mojPolomer,char mojNazov);
@@ -21,7 +21,9 @@ public:
     float getObsah() const;
     void vypisKruh() const;
     bool jeVacsi(Kruh otherKruh) const;
+    bool jeVacsi(const Kruh * otherKruh) const;
     Kruh spocitaj(Kruh other) const;
+    Kruh spocitaj(const Kruh *otherKruh) const;
     Kruh vydel(float cislo) const;
     Kruh pripocitaj(float cislo) const;
 };

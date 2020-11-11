@@ -6,17 +6,27 @@ int main()
     //Kruh Prvy(4,'n');
     Kruh kruhy[3]={{3,'a'},{7,'b'},{12,'l'}};
     Kruh Spolu(0,'s');
-    /*for(int i=0;i<3;++i)
-    {
-        Spolu=Spolu.spocitaj(kruhy[i]);
-    }*/
     for(auto i:kruhy)
     {
-        Spolu=Spolu.spocitaj(i);
+        Spolu=Spolu.spocitaj(&i);
     }
-    Spolu.vydel(3).vypisKruh();
-    Spolu.pripocitaj(13).vypisKruh();
-    Kruh::getMax(kruhy,3).vypisKruh();
+    Spolu.vypisKruh();
+    Kruh SpoluNew(0,'r');
+    for(auto i:kruhy)
+    {
+        SpoluNew=SpoluNew.spocitaj(&i);
+    }
+    SpoluNew.vypisKruh();
+    Kruh *pSpolu = new Kruh(0,'t');
+    for(auto i:kruhy)
+    {
+        *pSpolu=pSpolu->spocitaj(&i);
+    }
+    pSpolu->vypisKruh();
+    delete pSpolu;
+    //Spolu.vydel(3).vypisKruh();
+    //Spolu.pripocitaj(13).vypisKruh();
+    //Kruh::getMax(kruhy,3).vypisKruh();
     return 0;
 }
 
@@ -49,11 +59,9 @@ float Kruh::getPolomer() const
 {
     return polomer;
 }
-
 char Kruh::getNazov() const
 {    return nazov;
 }
-
 void Kruh::setPolomer(float mojPolomer)
 {
     polomer=mojPolomer;
@@ -110,4 +118,14 @@ Kruh Kruh::getMax(Kruh pole[], int pocet)
         }
     }
     return max;
+}
+
+bool Kruh::jeVacsi(const Kruh *otherKruh) const
+{
+    return polomer>otherKruh->polomer;
+}
+
+Kruh Kruh::spocitaj(const Kruh *otherKruh) const
+{
+    return {polomer+otherKruh->polomer,(polomer>otherKruh->polomer)?nazov:otherKruh->nazov};
 }
