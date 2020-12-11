@@ -1,11 +1,39 @@
 #include <iostream>
 #include <limits>
+#include <time.h>
 #include "kruh.h"
+
+int compA(const void * a1, const void *a2);
+int compD(const void * a1,const void *a2);
+int compNazov(const void * a1,const void *a2);
 
 int main()
 {
-    float cislo = Kruh::getfloat();
-    std::cout<<cislo;
+    srand(time(NULL));
+    //Kruh Kruhy[10];
+    //Kruh::generuj(Kruhy,10);
+    //Kruh::vypisKruhy(Kruhy,10);
+    Kruh * KruhyNew=Kruh::generuj(10);
+    Kruh::vypisKruhy(KruhyNew,10);
+    int (* pComp)(const void * a1, const void *a2);
+    pComp=compA;
+    qsort(KruhyNew,10,sizeof(Kruh),pComp);
+    Kruh::vypisKruhy(KruhyNew,10);
+    pComp=compD;
+    qsort(KruhyNew,10,sizeof(Kruh),pComp);
+    Kruh::vypisKruhy(KruhyNew,10);
+    pComp=compNazov;
+    qsort(KruhyNew,10,sizeof(Kruh),pComp);
+    Kruh::vypisKruhy(KruhyNew,10);
+    int (* pCompArray [])(const void * a1, const void *a2)={compA,compD,compNazov};
+    for(int i=0;i<3;++i)
+    {
+        qsort(KruhyNew,10,sizeof(Kruh),pCompArray[i]);
+        Kruh::vypisKruhy(KruhyNew,10);
+    }
+    delete [] KruhyNew;
+    //float cislo = Kruh::getfloat(true, true);
+    //std::cout<<cislo;
     //Kruh Prvy(4,'n');
     //Kruh kruhy[3]={{3,'a'},{7,'b'},{12,'l'}};
     //Kruh Spolu(0,'s');
@@ -60,10 +88,12 @@ int main()
 
 Kruh::Kruh()
 {
-    std::cout<<"Zadaj polomer:";
+    /*std::cout<<"Zadaj polomer:";
     std::cin>>polomer;
     std::cout<<"Zadaj nazov:";
-    std::cin>>nazov;
+    std::cin>>nazov;*/
+    polomer=1;
+    nazov='k';
 }
 
 Kruh::Kruh(char mojNazov):nazov(mojNazov)
@@ -295,6 +325,35 @@ float Kruh::getfloat(bool noZero, bool noNegative)
     }
 }
 
+void Kruh::generuj(Kruh *pole, int pocet)
+{
+    for(int i=0;i<pocet;++i)
+    {
+        (*(pole+i)).polomer=rand()%100; //pole[i].polomer =
+        (*(pole+i)).nazov=rand()%('z'-'a')+'a';     //97 az 122
+    }
+}
+
+Kruh *Kruh::generuj(int pocet)
+{
+    Kruh * newKruhy = new Kruh[pocet];
+    for(int i=0;i<pocet;++i)
+    {
+        (*(newKruhy+i)).polomer=rand()%100;
+        (*(newKruhy+i)).nazov=rand()%('z'-'a')+'a';     //97 az 122
+    }
+    return newKruhy;
+}
+
+void Kruh::vypisKruhy(const Kruh *pole, int pocet)
+{
+    std::cout<<"Vypisujem pole kruhov:"<<std::endl;
+    for(int i=0;i<pocet;++i)
+    {
+        std::cout<<*(pole+i);
+    }
+}
+
 void Kruh::noNumber::getMsg() const
 {
     std::cout<<msg<<std::endl;
@@ -308,4 +367,24 @@ void Kruh::noZero::getMsg() const
 void Kruh::noNegative::getMsg() const
 {
     std::cout<<msg<<std::endl;
+}
+
+int compA(const void * a1, const void *a2)
+{
+    Kruh * k1 = (Kruh *)a1;
+    Kruh * k2 = (Kruh *)a2;
+    return k1->getPolomer()-k2->getPolomer();
+}
+
+int compD(const void * a1,const void *a2)
+{
+    Kruh * k1 = (Kruh *)a1;
+    Kruh * k2 = (Kruh *)a2;
+    return k2->getPolomer()-k1->getPolomer();
+}
+int compNazov(const void * a1,const void *a2)
+{
+    Kruh * k1 = (Kruh *)a1;
+    Kruh * k2 = (Kruh *)a2;
+    return k1->getNazov()-k2->getNazov();
 }

@@ -13,6 +13,8 @@ iostream
 -
 limits
 -
+time.h
+-
 kruh.h
 /home/roman/CLionProjects/MAP2020/Kruh/kruh.h
 

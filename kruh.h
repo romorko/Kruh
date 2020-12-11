@@ -38,6 +38,9 @@ public:
     static void vymenKruhy(Kruh *prvy, Kruh *druhy);
     static void vymenKruhy(Kruh &prvy, Kruh &druhy);
     static float getfloat(bool noZero= false,bool noNegative= false);
+    static void generuj(Kruh *pole,int pocet);
+    static Kruh * generuj(int pocet);
+    static void vypisKruhy(const Kruh * pole ,int pocet);
     Kruh(float mojPolomer,char mojNazov);
     Kruh();
     explicit Kruh(float mojPolomer);
